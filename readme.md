@@ -1,4 +1,4 @@
 hi
-# 박채린 파일
+# 🖋채린 공부
 
-asdfasdfasdfsadfasdfasdfadsfsadfsadfasdfdsaf
+## 플러터 
