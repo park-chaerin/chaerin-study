@@ -45,3 +45,32 @@
 
 #### 왜 이렇게 복잡한 트리 구조를 가질까?
 - 위젯 트리, 엘리먼트 트리, 렌더 트리 등이 존재하는 이유 : 렌더링(출력) 속도 때문!
+
+## 08-5 상태의 생명 주기
+- StatelessWidget과 StatefulWidget은 화면이 다시 빌드될 때마다 매번 생성되므로 생명주기를 논할 필요 X.
+- State는 한 번 생성된 후 메모리에 유지되기때문에 생명 주기를 가짐. -> 생명주기 함수를 재정의 할 수 있음.
+
+<img src= "https://github.com/park-chaerin/chaerin-study/assets/70634789/b1433a29-5ede-4f93-98ab-39b04f57932b" width= 500>
+
+- setState()는 State의 상태를 변경할 때 호출하는 함수. 
+- 마름모로 표현한 Dirty와 Clean은 상태.(생명주기 함수가 아님.)
+  - clean : State에 의해 화면이 출력되고 있는 정상 상태.
+  - dirty : State화면을 다시 빌드해야 하는 상태.
+
+### State클래스에서 재정의할 수 있는 생명 주기 함수
+ - initState()
+ - didChangeDependencies()
+ - build()
+ - didUpdateWidget()
+ - dispose()
+
+### initState() 함수 호출 시점
+- State 객체가 생성되자마자 가장 먼저 최초에 한 번 호출됨.
+- 주로 상태값을 초기화하는 로직 작성.
+  - ex) State가 생성되자마자 최초에 한 번 서버와 연동해 초기 데이터를 가져와 상태값에 할당하는 코드를 initState()에 작성.
+- 다양한 이벤트 처리도 initState() 함수에 작성.
+  - 이벤트를 처리하는 리스너는 한 번만 등록하고, 그 이후에 콜백함수만 반복해서 호출하면 되기 때문에 주로 initState()함수에 등록.
+    - ex) 앱이 화면에 출력되는 순간이나 화면에서 사라지는 순간 이벤트 처리르 해야할 때 리스너를 initState()함수에 등록.
+
+### didChangeDependencies() 함수 호출 시점
+- 
